@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width-device-width, initial-scale=1">
+        <title></title>
+        <meta name="description" content="A descriptive sentence.">
+        <meta name="author" content="website or author name">
+    <!--
+      <meta property="og:title" content="A Basic HTML5 Template">
+      <meta property="og:type" content="website">
+      <meta property="og:url" content="https://www.sitepoint.com/a-basic-html5-template/">
+      <meta property="og:description" content="A simple HTML5 Template for new projects.">
+      <meta property="og:image" content="image.png">
+    -->
+    <!-- Fav icons
+        <link rel="icon" href="/favicon.ico">
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+        <link rel="apple-touch-icon" href="_/apple-touch-icon.png">
+        <link rel="stylesheet" href="_/styles.css">
+  -->
+        <style>
+  df-messenger {
+        --df-messenger-chat-background-color: rgba(0, 255, 255, 0.2);
+        /* Widget title bar and floating button colour */
+        --df-messenger-button-titlebar-color: rgba(255, 255, 255, 0.2);
+        --df-messenger-button-titlebar-font-color: black;
+        /* Message bubbles: text and background colours */
+        --df-messenger-font-color: black;
+        --df-messenger-bot-message: rgba(0, 0, 255, 0.2);
+        --df-messenger-user-message: white;
+        /* Message input form */
+        --df-messenger-input-box-color: pink;
+        --df-messenger-input-font-color: brown;
+        --df-messenger-input-placeholder-font-color: purple;
+        --df-messenger-send-icon: white;
+        /* Color of the close icon in the closed chat view.
+        Make the samecolour as: button-titlebar-color ??? */
+        --df-messenger-minimized-chat-close-icon-color:;
+            }
+        </style>
+    <!-- DF bot JS -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+    <!-- Jquery CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        //To minimise the height of chatbox
+        $(document).ready(function() {
+            window.addEventListener('dfMessengerLoaded', function (event) {
+            $r1 = document.querySelector("df-messenger");
+            $r2 = $r1.shadowRoot.querySelector("df-messenger-chat");
+            $r3 = $r2.shadowRoot.querySelector("df-messenger-user-input"); //for other mods
+            var sheet = new CSSStyleSheet;
+            // widget custom style
+            sheet.replaceSync( '@media screen and (max-width: 5000px){ div.chat-wrapper {bottom: 96px; right: 0; width: 100%;} div.chat-wrapper[opened="true"] {height: calc(100% - 42px); border-radius: 0; box-shadow:none; border-bottom: 3px dotted grey; } }');
+            $r2.shadowRoot.adoptedStyleSheets = [ sheet ];
+            });
+        });
+    </script>
+    </head>
+    <body style="background-image: url('https:&#x2F;&#x2F;openmoji.org&#x2F;data&#x2F;color&#x2F;svg&#x2F;1F4A9.svg');">
+        <!-- chat-icon = Icon used for the chat dialog open button. The Dialogflow icon is the default. This field must be a public URL. The icon size should be 36px by 36px. -->
+        <df-messenger
+          chat-title="Emplumar"
+          agent-id="ac689632-c365-4128-bd82-c8915d806122"
+          chat-icon="https:&#x2F;&#x2F;openmoji.org&#x2F;data&#x2F;color&#x2F;svg&#x2F;1F4A9.svg"
+          expand=true
+          intent="WELCOME"
+          language-code="en"
+        ></df-messenger>
+
+    </body>
+</html>
